@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'multi-check';
+
+  public values = [
+    { code: '001', label: 'Math' },
+    { code: '002', label: 'Science' },
+    { code: '003', label: 'History' },
+  ];
+
 }
