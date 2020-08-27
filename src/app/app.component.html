@@ -1,5 +1,11 @@
 <app-multi-check-field>
-  <app-simple-check-option *ngFor="let item of values" [value]="item"
+  <app-simple-check-option appMultiCheckOption *ngFor="let item of values" [value]="item"
     [label]="item.label">
   </app-simple-check-option>
+</app-multi-check-field>
+
+<app-multi-check-field>
+  <app-user-check-option appMultiCheckOption *ngFor="let item of values" [value]="item"
+    [label]="item.label">
+  </app-user-check-option>
 </app-multi-check-field>

@@ -1,21 +1,20 @@
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, Input, forwardRef } from '@angular/core';
+import { MultiCheckOption } from '../../classes/multi-check-option';
 
 @Component({
   selector: 'app-simple-check-option',
   templateUrl: './simple-check-option.component.html',
-  styleUrls: ['./simple-check-option.component.scss']
+  styleUrls: ['./simple-check-option.component.scss'],
+  providers: [
+    {
+      provide: MultiCheckOption,
+      useExisting: forwardRef(() => SimpleCheckOptionComponent)
+    }
+  ]
 })
-export class SimpleCheckOptionComponent {
+export class SimpleCheckOptionComponent extends MultiCheckOption {
 
   @Input() value: any;
   @Input() label: string;
-
-  public control = new FormControl(false);
-
-  get valueChanges$(): Observable<boolean> {
-    return this.control.valueChanges;
-  }
 
 }

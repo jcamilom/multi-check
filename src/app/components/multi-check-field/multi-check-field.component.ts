@@ -1,5 +1,5 @@
 import { Component, QueryList, ContentChildren, AfterContentInit, OnDestroy } from '@angular/core';
-import { SimpleCheckOptionComponent } from 'src/app/components/simple-check-option/simple-check-option.component';
+import { MultiCheckOptionDirective } from '../../directives/multi-check-option.directive';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy {
 
-  @ContentChildren(SimpleCheckOptionComponent) options!: QueryList<SimpleCheckOptionComponent>;
+  @ContentChildren(MultiCheckOptionDirective) options!: QueryList<MultiCheckOptionDirective>;
 
   private subscriptions = new Subscription();
   public selectedValues: any[] = [];
@@ -17,12 +17,12 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy {
   ngAfterContentInit(): void {
     this.options.forEach(option => {
       this.subscriptions.add(
-        option.valueChanges$.subscribe(
+        option.component.valueChanges$.subscribe(
           optionChecked => {
             if (optionChecked) {
-              this.add(option.value);
+              this.add(option.component.value);
             } else {
-              this.remove(option.value);
+              this.remove(option.component.value);
             }
           }
         )
