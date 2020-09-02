@@ -5,7 +5,7 @@
 </app-multi-check-field>
 
 <app-multi-check-field>
-  <app-user-check-option appMultiCheckOption *ngFor="let item of values" [value]="item"
-    [label]="item.label">
+  <app-user-check-option appMultiCheckOption *ngFor="let user of users"
+    [value]="user">
   </app-user-check-option>
 </app-multi-check-field>

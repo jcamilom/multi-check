@@ -1,4 +1,11 @@
 <label>
   <input type="checkbox" [formControl]="control">
-  <span>{{ label }}</span>
+  <div class="card">
+    <div class="avatar">
+      <img src="assets/images/{{ value.avatar }}" alt="{{ value.name }}">
+      <div class="span"></div>
+    </div>
+    <h1>{{ value.name }}</h1>
+    <h2>{{ value.location }}</h2>
+  </div>
 </label>

@@ -15,6 +15,5 @@ import { MultiCheckOption } from '../../classes/multi-check-option';
 export class UserCheckOptionComponent extends MultiCheckOption {
 
   @Input() value: any;
-  @Input() label: string;
 
 }
