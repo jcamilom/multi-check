@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MultiCheckOption } from '../../classes/multi-check-option';
 
 @Component({
@@ -8,7 +8,7 @@ import { MultiCheckOption } from '../../classes/multi-check-option';
   providers: [
     {
       provide: MultiCheckOption,
-      useExisting: forwardRef(() => SimpleCheckOptionComponent)
+      useExisting: SimpleCheckOptionComponent,
     }
   ]
 })
