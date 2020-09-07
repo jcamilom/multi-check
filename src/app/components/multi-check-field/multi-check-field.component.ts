@@ -22,6 +22,8 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
   private subscriptions = new Subscription();
   public selectedValues: any[] = [];
 
+  _onChange: (_: any) => void;
+
   ngAfterContentInit(): void {
     this.options.forEach(option => {
       this.subscriptions.add(
@@ -40,12 +42,14 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
 
   private add(value: any): void {
     this.selectedValues.push(value);
+    this._onChange(this.selectedValues);
   }
 
   private remove(value: any): void {
     const idx = this.selectedValues.findIndex(v => v === value);
     if (idx >= 0) {
       this.selectedValues.splice(idx, 1);
+      this._onChange(this.selectedValues);
     }
   }
 
@@ -59,7 +63,7 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
   }
 
   registerOnChange(fn: any): void {
-
+    this._onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
