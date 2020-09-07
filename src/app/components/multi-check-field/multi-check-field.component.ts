@@ -1,7 +1,7 @@
 import { Component, QueryList, ContentChildren, AfterContentInit, OnDestroy, forwardRef } from '@angular/core';
 import { MultiCheckOption } from '../../classes/multi-check-option';
 import { Subscription } from 'rxjs';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-multi-check-field',
@@ -15,7 +15,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy {
+export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
 
   @ContentChildren(MultiCheckOption) options!: QueryList<MultiCheckOption>;
 
@@ -47,6 +47,27 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy {
     if (idx >= 0) {
       this.selectedValues.splice(idx, 1);
     }
+  }
+
+  writeValue(values: any[]): void {
+    values = values || [];
+    this.selectedValues = [];
+    values.forEach(selectedValue => {
+      const selectedOption = this.options.find(v => v.value === selectedValue);
+      selectedOption.control.setValue(true);
+    });
+  }
+
+  registerOnChange(fn: any): void {
+
+  }
+
+  registerOnTouched(fn: any): void {
+
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+
   }
 
   ngOnDestroy(): void {
