@@ -1,11 +1,19 @@
-import { Component, QueryList, ContentChildren, AfterContentInit, OnDestroy } from '@angular/core';
+import { Component, QueryList, ContentChildren, AfterContentInit, OnDestroy, forwardRef } from '@angular/core';
 import { MultiCheckOption } from '../../classes/multi-check-option';
 import { Subscription } from 'rxjs';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-multi-check-field',
   templateUrl: './multi-check-field.component.html',
-  styleUrls: ['./multi-check-field.component.scss']
+  styleUrls: ['./multi-check-field.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MultiCheckFieldComponent),
+      multi: true
+    }
+  ]
 })
 export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy {
 
