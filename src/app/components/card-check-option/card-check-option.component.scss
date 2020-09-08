@@ -1,0 +1,29 @@
+input {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.card {
+  box-sizing: border-box;
+  margin: 5px;
+  max-width: 200px;
+  height: 80px;
+  background-color: #fafafa;
+  color: #2E2E46;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: #0077b6;
+    border: 3px solid #0077b6;
+  }
+}
+
+input:checked ~ .card {
+  background-color: white;
+  color: #0077b6;
+  border: 3px solid #0077b6;
+}
