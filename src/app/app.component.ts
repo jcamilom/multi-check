@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +8,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  public values = [
-    { code: '001', label: 'Math' },
-    { code: '002', label: 'Science' },
-    { code: '003', label: 'History' },
-  ];
-
   public users = [
     { name: 'Andrea Abad', location: 'Medellín, Colombia', avatar: 'andrea.jpg' },
-    { name: 'Stjepan Jurić', location: 'Zagreb, Croatia', avatar: 'stjepan.jpg' },
-    { name: 'Anna Uhlíková', location: 'Prag, Czech Republic', avatar: 'anna.jpg' },
+    { name: 'Anna Uhlíková', location: 'Prag, Czechia', avatar: 'anna.jpg' },
     { name: 'Juan Paez', location: 'Puebla, México', avatar: 'juan.jpg' },
+    { name: 'Stjepan Jurić', location: 'Zagreb, Croatia', avatar: 'stjepan.jpg' },
   ];
+
+  public languages = [
+    { id: '1', name: 'C++' },
+    { id: '2', name: 'HTML' },
+    { id: '3', name: 'Javascript' },
+    { id: '4', name: 'Go' },
+    { id: '5', name: 'Java' },
+    { id: '6', name: 'Typescript' },
+    { id: '7', name: 'CSS' },
+    { id: '8', name: 'C' },
+  ];
+
+  public form = new FormGroup({
+    name: new FormControl(''),
+    languages: new FormControl(null),
+    members: new FormControl(null),
+  });
 
 }

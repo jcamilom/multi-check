@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, ControlValueAccessor {
 
-  @ContentChildren(MultiCheckOption) options!: QueryList<MultiCheckOption>;
+  @ContentChildren(MultiCheckOption, { descendants: true }) options!: QueryList<MultiCheckOption>;
 
   private subscriptions = new Subscription();
   public selectedValues: any[] = [];

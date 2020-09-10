@@ -1,11 +1,26 @@
-<app-multi-check-field>
-  <app-simple-check-option appMultiCheckOption *ngFor="let item of values" [value]="item"
-    [label]="item.label">
-  </app-simple-check-option>
-</app-multi-check-field>
+<form [formGroup]="form">
 
-<app-multi-check-field>
-  <app-user-check-option appMultiCheckOption *ngFor="let user of users"
-    [value]="user">
-  </app-user-check-option>
-</app-multi-check-field>
+  <h3>Team name</h3>
+  <input type="text" formControlName="name">
+
+  <h3>Required languages</h3>
+
+  <app-multi-check-field formControlName="languages">
+    <div class="container">
+      <app-card-check-option *ngFor="let language of languages" [value]="language.name" [label]="language.name">
+      </app-card-check-option>
+    </div>
+  </app-multi-check-field>
+
+  <h3>Team members</h3>
+
+  <app-multi-check-field formControlName="members" class="flex-field">
+    <app-user-check-option *ngFor="let user of users" [value]="user">
+    </app-user-check-option>
+  </app-multi-check-field>
+
+  <div class="f-value">
+    <span>form value: </span>
+    <pre>{{ form.value | json }}</pre>
+  </div>
+</form>

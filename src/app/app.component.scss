@@ -1,0 +1,30 @@
+form {
+  max-width: 600px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h3 {
+  color: #0077b6
+}
+
+.flex-field {
+  display: flex;
+  > * {
+    margin: 0 6px;
+  }
+}
+
+.f-value {
+ margin-top: 20px;
+ span {
+   font-weight: bold;
+ }
+}
+
+input, .f-value {
+  font-size: 14px;
+}
