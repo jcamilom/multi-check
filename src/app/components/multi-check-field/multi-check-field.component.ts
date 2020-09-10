@@ -45,9 +45,11 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
     }
   }
 
-  private add(value: any): void {
+  private add(value: any, emitModelChange = true): void {
     this.selectedValues.push(value);
-    this._onChange(this.selectedValues);
+    if (emitModelChange) {
+      this._onChange(this.selectedValues);
+    }
   }
 
   private remove(value: any): void {
@@ -62,7 +64,8 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
     this.selectedValues = [];
     values.forEach(selectedValue => {
       const selectedOption = this.options.find(v => v.value === selectedValue);
-      selectedOption.control.setValue(true);
+      selectedOption.control.setValue(true, { emitEvent: false });
+      this.add(selectedValue, false);
     });
   }
 
