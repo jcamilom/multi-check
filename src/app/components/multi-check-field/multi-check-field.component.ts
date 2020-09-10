@@ -21,6 +21,7 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
 
   private subscriptions = new Subscription();
   private selectedValues: any[] = [];
+  private temporalValue: any[];
 
   _onChange: (_: any) => void;
 
@@ -38,6 +39,10 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
         )
       );
     });
+    if (this.temporalValue) {
+      this.setSelectedValues(this.temporalValue);
+      this.temporalValue = null;
+    }
   }
 
   private add(value: any): void {
@@ -53,13 +58,21 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
     }
   }
 
-  writeValue(values: any[]): void {
-    values = values || [];
+  private setSelectedValues(values: any[]): void {
     this.selectedValues = [];
     values.forEach(selectedValue => {
       const selectedOption = this.options.find(v => v.value === selectedValue);
       selectedOption.control.setValue(true);
     });
+  }
+
+  writeValue(values: any[]): void {
+    values = values || [];
+    if (this.options) {
+      this.setSelectedValues(values);
+    } else {
+      this.temporalValue = values;
+    }
   }
 
   registerOnChange(fn: any): void {

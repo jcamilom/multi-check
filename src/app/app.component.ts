@@ -30,8 +30,8 @@ export class AppComponent {
 
   public form = new FormGroup({
     name: new FormControl(''),
-    languages: new FormControl(null),
-    members: new FormControl(null),
+    languages: new FormControl([this.languages[0].name, this.languages[2].name]),
+    members: new FormControl([this.users[1]]),
   });
 
 }
