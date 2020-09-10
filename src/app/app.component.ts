@@ -9,10 +9,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
 
   public users = [
-    { name: 'Andrea Abad', location: 'Medellín, Colombia', avatar: 'andrea.jpg' },
-    { name: 'Anna Uhlíková', location: 'Prag, Czechia', avatar: 'anna.jpg' },
-    { name: 'Juan Paez', location: 'Puebla, México', avatar: 'juan.jpg' },
-    { name: 'Stjepan Jurić', location: 'Zagreb, Croatia', avatar: 'stjepan.jpg' },
+    { name: 'Andrea Abad', location: 'Medellín, Colombia', avatar: 'https://raw.githubusercontent.com/jcamilom/multi-check/master/src/assets/images/andrea.jpg?raw=true' },
+    { name: 'Anna Uhlíková', location: 'Prag, Czechia', avatar: 'https://github.com/jcamilom/multi-check/blob/master/src/assets/images/anna.jpg?raw=true' },
+    { name: 'Juan Paez', location: 'Puebla, México', avatar: 'https://github.com/jcamilom/multi-check/blob/master/src/assets/images/juan.jpg?raw=true' },
+    { name: 'Stjepan Jurić', location: 'Zagreb, Croatia', avatar: 'https://github.com/jcamilom/multi-check/blob/master/src/assets/images/stjepan.jpg?raw=true' },
   ];
 
   public languages = [
