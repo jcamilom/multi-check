@@ -20,7 +20,7 @@ export class MultiCheckFieldComponent implements AfterContentInit, OnDestroy, Co
   @ContentChildren(MultiCheckOption, { descendants: true }) options!: QueryList<MultiCheckOption>;
 
   private subscriptions = new Subscription();
-  public selectedValues: any[] = [];
+  private selectedValues: any[] = [];
 
   _onChange: (_: any) => void;
 
